@@ -61,6 +61,7 @@ export default function ContactForm() {
     toast({
       title: "Form Submitted Successfully!",
       description: "Thank you for your interest. We'll contact you soon.",
+      variant: "success",
     });
   };
 
