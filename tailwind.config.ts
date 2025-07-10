@@ -11,6 +11,9 @@ const config: Config = {
         sans: ['var(--font-open-sans)', 'sans-serif'],
         // sans: ['"Open Sans"', 'sans-serif'],
       },
+      colors: {
+        'success': '#18B473',
+      },
     },
   },
   plugins: [],

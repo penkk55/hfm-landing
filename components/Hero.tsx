@@ -1,10 +1,13 @@
-'use client'
+"use client";
 
-import ContactForm from './ContactForm'
-
+import ContactForm from "./ContactForm";
+import { sofia700 } from "@/app/fonts";
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 overflow-hidden flex items-center justify-center">
+    <section
+      className="relative min-h-screen bg-cover bg-center bg-no-repeat overflow-hidden flex items-center justify-center"
+      style={{ backgroundImage: "url('/image/main-image-1.svg')" }} // or '/image/main-image-1.jpg' if needed
+    >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/20" />
 
@@ -16,27 +19,36 @@ export default function Hero() {
 
       {/* Centered Content */}
       <div className="relative z-10 container mx-auto px-4 py-24 text-center">
-        <div className="max-w-3xl mx-auto space-y-10">
+        <div className="max-w-3xl mx-auto space-y-10 my-8 ">
           {/* Heading */}
-          <div className="text-white space-y-6">
-            <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+          <div className="text-white ">
+            <h1
+              className={`text-[70px] lg:text-[70px] font-bold leading-[1] text-transparent bg-clip-text ${sofia700.className}`}
+              style={{
+                backgroundImage:
+                  "linear-gradient(90deg, #FCD678 0%, #FCD678 0.01%, #BC8C2F 100%)",
+              }}
+            >
               LOREM IPSUM DOLOR
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500">
-                SIT AMET TOSIK
-              </span>
             </h1>
-            <p className="text-xl text-gray-300">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            <h1 className={`text-[70px] lg:text-[70px] font-bold leading-[1] ${sofia700.className}`}>
+                SIT AMET TOSIK 
+            </h1>
+
+            {/* <p className="text-xl text-gray-300">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p> */}
           </div>
 
-          {/* Contact Form */}
+          
+        </div>
+        {/* Contact Form */}
           <div className="flex justify-center">
             <ContactForm />
           </div>
-        </div>
       </div>
     </section>
-  )
+  );
 }
