@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 const winners = [
   {
     rank: 1,
-    month: "January",
+    month: "JANUARY",
     name: "JOHN SMITH",
     phone: "5678987654",
     gain: "16344%",
@@ -19,7 +19,7 @@ const winners = [
   },
   {
     rank: 2,
-    month: "January",
+    month: "JANUARY",
     name: "JOHN SMITH",
     phone: "5678987654",
     gain: "16344%",
@@ -27,7 +27,7 @@ const winners = [
   },
   {
     rank: 3,
-    month: "January",
+    month: "JANUARY",
     name: "JOHN SMITH",
     phone: "5678987654",
     gain: "16344%",
@@ -38,22 +38,26 @@ const winners = [
 export default function Leaderboard() {
   const [gains, setGains] = useState<string[]>([]);
 
-  //   useEffect(() => {
-  //     const generated = Array.from({ length: 10 }).map(() =>
-  //       (Math.random() * 1600 + 60).toFixed(2)
-  //     );
-  //     setGains(generated);
-  //   }, []);
-
   useEffect(() => {
     const generated = Array.from({ length: 10 }).map(() =>
       parseFloat((Math.random() * 1600 + 60).toFixed(2))
     );
-
-    // Sort in descending order
     const sorted = generated.sort((a, b) => b - a).map((n) => n.toFixed(2));
     setGains(sorted);
   }, []);
+
+  const getSuperscript = (rank: number) => {
+    switch (rank) {
+      case 1:
+        return "st";
+      case 2:
+        return "nd";
+      case 3:
+        return "rd";
+      default:
+        return "th";
+    }
+  };
 
   return (
     <section className="py-20 bg-gray-50">
@@ -68,15 +72,17 @@ export default function Leaderboard() {
             {winners.map((winner, idx) => (
               <div
                 key={idx}
-                className="relative bg-white p-6 rounded-xl flex gap-6 items-center shadow-md"
+                className="relative bg-white p-6 rounded-2xl flex gap-6 items-center shadow-sm"
               >
                 {/* Sash Ribbon */}
-                <div className="absolute top-0 right-0">
+                <div className="absolute top-0 right-0 overflow-hidden w-[100px] h-[100px]">
                   <div
-                    className="text-white text-xs font-bold px-8 py-1 transform rotate-45 translate-x-5 -translate-y-2 rounded-sm"
+                    className="absolute top-[20px] right-[-40px] text-white text-xs font-bold px-10 py-1 rotate-45"
                     style={{
                       background:
                         "linear-gradient(90deg, #FCD678 0%, #FCD678 0.01%, #BC8C2F 100%)",
+                      width: "140px",
+                      textAlign: "center",
                     }}
                   >
                     $1000
@@ -87,30 +93,27 @@ export default function Leaderboard() {
                 <Image
                   src={winner.trophy}
                   alt={`Trophy ${winner.rank}`}
-                  width={48}
-                  height={48}
+                  width={60}
+                  height={60}
                 />
 
                 {/* Info */}
-                <div>
-                  <p className="text-[#C79F43] font-semibold text-sm">
+                <div className="flex flex-col justify-center">
+                  <p className="text-[#C79F43] font-semibold text-sm leading-tight">
                     {winner.month} {winner.rank}
-                    {winner.rank === 1
-                      ? "st"
-                      : winner.rank === 2
-                      ? "nd"
-                      : winner.rank === 3
-                      ? "rd"
-                      : "th"}{" "}
-                    WINNER
+                    <sup>{getSuperscript(winner.rank)}</sup> WINNER
                   </p>
-                  <p className="font-semibold text-black text-sm">
+                  <p className="font-semibold text-black text-[15px] leading-tight">
                     {winner.name}
                   </p>
-                  <p className="text-xs text-gray-500">{winner.phone}</p>
-                  <p className="text-xs font-semibold mt-2">
+                  <p className="text-sm text-gray-400 leading-tight">
+                    {winner.phone}
+                  </p>
+                  <p className="text-sm font-bold mt-2 leading-tight text-black">
                     TOTAL GAIN OF{" "}
-                    <span className="text-red-600">{winner.gain}</span>
+                    <span className="text-red-600 font-bold">
+                      {winner.gain}
+                    </span>
                   </p>
                 </div>
               </div>
@@ -130,13 +133,10 @@ export default function Leaderboard() {
                 </tr>
               </thead>
               <tbody className="text-sm text-gray-800">
-                {Array.from({ length: 10 }).map((_, i) => (
+                {gains.map((gain, i) => (
                   <tr key={i} className="border-b border-gray-100">
                     <td className="py-2">John Smith</td>
-                    <td className="py-2 text-right">
-                      {/* {(Math.random() * 1600 + 60).toFixed(2)}% */}
-                      {gains[i]}%
-                    </td>
+                    <td className="py-2 text-right">{gain}%</td>
                   </tr>
                 ))}
               </tbody>
@@ -147,12 +147,16 @@ export default function Leaderboard() {
           </div>
         </div>
 
-        {/* CTA */}
         <div className="text-center mt-12">
-          <Button className="w-[300px] text-white text-lg bg-[#179149] hover:bg-green-700 rounded-sm">
-            JOIN NOW
-          </Button>
-          <p className="text-xs text-gray-400 mt-2">
+          <a href="#hero">
+            <Button
+              type="button"
+              className="w-[300px] text-white text-lg bg-[#179149] hover:bg-green-700 rounded-sm"
+            >
+              JOIN NOW
+            </Button>
+          </a>
+          <p className="text-gray-500 text-xs mt-2">
             Terms and Conditions apply
           </p>
         </div>
