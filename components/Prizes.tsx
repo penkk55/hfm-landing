@@ -6,6 +6,7 @@ import Medal1 from "@/public/image/medal-1.svg";
 import Medal2 from "@/public/image/medal-2.svg";
 import Medal3 from "@/public/image/medal-3.svg";
 import { sofia400 } from "@/app/fonts";
+import { Button } from "./ui/button";
 
 const prizes = [
   {
@@ -57,13 +58,17 @@ const Prizes = () => {
         </div>
 
         <div className="text-center">
-          <a
-            href="#hero"
-            className="inline-block bg-[#179149] hover:bg-green-700 text-white px-12 py-3 rounded-sm font-bold text-lg mb-2 transition-colors"
-          >
-            JOIN NOW
+          <a href="#hero">
+            <Button
+              type="button"
+              className="w-[300px] text-white text-lg bg-[#179149] hover:bg-green-700 rounded-sm"
+            >
+              JOIN NOW
+            </Button>
           </a>
-          <p className="text-xs text-gray-500">Terms and Conditions apply</p>
+          <p className="text-gray-500 text-xs mt-2">
+            Terms and Conditions apply
+          </p>
         </div>
       </div>
     </section>
