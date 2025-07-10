@@ -41,7 +41,7 @@ const featuresRight = [
 
 export default function Features() {
   return (
-    <section className="pt-20 bg-gray-50">
+    <section className="pt-20 bg-[#F4F4F4]">
       <div className="container mx-auto px-4">
         <h2 className={`text-center text-[50px]  text-black mb-16 ${sofia400.className}`}>
           QUISQUE RUTRUM
