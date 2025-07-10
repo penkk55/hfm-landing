@@ -4,8 +4,8 @@ import ContactForm from "./ContactForm";
 import { sofia700 } from "@/app/fonts";
 export default function Hero() {
   return (
-    <section
-      className="relative min-h-screen bg-cover bg-center bg-no-repeat overflow-hidden flex items-center justify-center"
+    <section id="hero" 
+      className="relative  bg-cover bg-center bg-no-repeat overflow-hidden flex items-center justify-center" // min-h-screen
       style={{ backgroundImage: "url('/image/main-image-1.svg')" }} // or '/image/main-image-1.jpg' if needed
     >
       {/* Overlay */}
@@ -18,7 +18,7 @@ export default function Hero() {
       </div>
 
       {/* Centered Content */}
-      <div className="relative z-10 container mx-auto px-4 py-24 text-center">
+      <div className="relative z-10 container mx-auto px-4 pt-12 pb-20 text-center">
         <div className="max-w-3xl mx-auto space-y-10 my-8 ">
           {/* Heading */}
           <div className="text-white ">

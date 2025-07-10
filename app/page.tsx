@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
-// import Prizes from "@/components/Prizes";
+import Prizes from "@/components/Prizes";
 // import Leaderboard from "@/components/Leaderboard";
 // import FAQ from "@/components/FAQ";
 // import Footer from "@/components/Footer";
@@ -12,8 +12,8 @@ export default function Home() {
       <Header/>
       <Hero />
       <Features />
-      {/* 
       <Prizes />
+      {/* 
       <Leaderboard />
       <FAQ />
       <Footer /> */}
