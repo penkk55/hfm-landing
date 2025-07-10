@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-// import Features from "@/components/Features";
+import Features from "@/components/Features";
 // import Prizes from "@/components/Prizes";
 // import Leaderboard from "@/components/Leaderboard";
 // import FAQ from "@/components/FAQ";
@@ -11,10 +11,8 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
       <Header/>
       <Hero />
-      <Hero />
-      <Hero />
-      <Hero />
-      {/* <Features />
+      <Features />
+      {/* 
       <Prizes />
       <Leaderboard />
       <FAQ />
