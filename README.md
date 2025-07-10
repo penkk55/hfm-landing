@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HF Markets Landing Page Challenge
 
-## Getting Started
+A responsive landing page built with **Next.js 15 App Router**, **Tailwind CSS**, and **ShadCN UI** – inspired by the provided Figma design for **HF Markets Group**.
 
-First, run the development server:
+## ✅ Completion Status
+
+> 🎯 **~90% functional & visually aligned** with the Figma mockup.
+
+Despite being a full-stack engineer with a backend focus, I implemented this page to match the design as closely as possible while ensuring usability, responsiveness, and clean code.
+
+---
+
+## 📸 Screenshots
+
+
+| Hero | Features | Prizes | Leaderboard | FAQ |
+|------|----------|--------|-------------|-----|
+| ![Hero](./public/screenshots/hero.png) | ![Features](./public/screenshots/features.png) | ![Prizes](./public/screenshots/prizes.png) | ![Leaderboard](./public/screenshots/leaderboard.png) | ![FAQ](./public/screenshots/faq.png) |
+
+
+---
+
+## 🛠️ Stack
+
+- **Next.js 15 (App Router)**
+- **React 19**
+- **Tailwind CSS**
+- **ShadCN UI**
+- **Lucide Icons + React Icons**
+- `scroll-behavior: smooth` (for navigation)
+- Custom form with `react-hook-form` and validation
+
+---
+
+## 🔥 Features Implemented
+
+- ✅ Sticky header with smooth scroll
+- ✅ Hero section with phone mockup
+- ✅ Feature grid and prize section
+- ✅ Leaderboard with dynamic gain sorting + styled ribbon
+- ✅ Working contact form
+- ✅ faq section
+- ✅ Responsive across devices
+- ✅ Footer closely aligned with design (icons, layout, copy)
+
+---
+
+## ⚙️ Running Locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
