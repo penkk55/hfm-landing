@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,7 +9,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -23,12 +22,6 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 
-const countries = [
-  { code: "CY", name: "Cyprus", dialCode: "+357" },
-  { code: "GB", name: "United Kingdom", dialCode: "+44" },
-  { code: "DE", name: "Germany", dialCode: "+49" },
-] as const;
-
 const formSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
@@ -39,8 +32,15 @@ const formSchema = z.object({
 
 type ContactFormValues = z.infer<typeof formSchema>;
 
+type Country = {
+  code: string;
+  name: string;
+  dialCode: string;
+};
+
 export default function ContactForm() {
   const { toast } = useToast();
+  const [countries, setCountries] = useState<Country[]>([]);
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -61,20 +61,21 @@ export default function ContactForm() {
     toast({
       title: "Form Submitted Successfully!",
       description: "Thank you for your interest. We'll contact you soon.",
-      variant:'success'
     });
   };
 
   const handleCountryChange = (code: string) => {
     form.setValue("country", code);
-    const country = countries.find((c) => c.code === code);
-    if (country) {
-      // form.setValue("phone", `${country.dialCode} `);
-    }
   };
 
+  useEffect(() => {
+    fetch("/api/countries")
+      .then((res) => res.json())
+      .then((data) => setCountries(data))
+      .catch((err) => console.error("Failed to load countries:", err));
+  }, []);
+
   return (
-    // <div className="w-full flex flex-col w-full max-w-md bg-white/90 backdrop-blur-xl rounded-2xl p-8 shadow-2xl">
     <div className="w-fit bg-white/90 backdrop-blur-xl rounded-2xl p-8 shadow-2xl">
       <div className="text-center mb-6">
         <h3 className="text-2xl font-bold text-gray-800 mb-2">
@@ -87,11 +88,10 @@ export default function ContactForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* First Name */}
             <FormField
-            
               control={form.control}
               name="firstName"
               render={({ field }) => (
-                <FormItem className="w-[320px]" style={{ width: "320px", maxWidth: "320px" }}>
+                <FormItem className="w-[320px]">
                   <FormControl>
                     <Input
                       placeholder="First Name"
@@ -162,9 +162,7 @@ export default function ContactForm() {
                 control={form.control}
                 name="phone"
                 render={({ field }) => (
-                  <FormItem className=" " 
-                  // className="w-2/3"
-                  >
+                  <FormItem>
                     <FormControl>
                       <Input
                         placeholder="Phone"
@@ -229,7 +227,7 @@ export default function ContactForm() {
           {/* Submit */}
           <Button
             type="submit"
-            className="w-[300px] text-white text-lg  bg-[#179149] hover:bg-green-700 rounded-sm"
+            className="w-[300px] text-white text-lg bg-[#179149] hover:bg-green-700 rounded-sm"
           >
             JOIN NOW
           </Button>
